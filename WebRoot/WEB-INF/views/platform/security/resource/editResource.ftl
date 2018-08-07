@@ -1,79 +1,92 @@
+<#include "common/common.ftl">
 <#assign shiro=JspTaglibs["/WEB-INF/tlds/shiro.tld"]/>
-<#include "/platform/common/common.ftl">
-    <link rel="stylesheet" href="${tradeBasePath}/platform/css/tree/metroStyle.css" type="text/css">
-    <script type="text/javascript" src="${tradeBasePath}/platform/js/tree/jquery.ztree.core.min.js"></script>
-    <script type="text/javascript" src="${tradeBasePath}/platform/js/tree/jquery.ztree.excheck.min.js"></script>
-    <div id="content-header">
-        <div class="widget-title radius-3"><h3 class="title">新增/修改资源</h3></div>
-    </div>
-    <div class="container-fluid">
-         <div class="row-fluid">
-            <div class="widget-content radius-3">
-                <!--内容-->
-                 <form id="formBean" class="form-horizontal"> 
-                     <input type="hidden" id="id" name="id" value="${resource.id}" /> 
-                     <input type="hidden" id="status" name="status" value="${resource.status}" /> 
-                     <input type="hidden" id="subResourcesJson" name="subResourcesJson" value="" /> 
-                     <input type="hidden" id="parentName" name="parentName" value="${resource.parentName}" />  
-                     <input type="hidden" id="hadSub" name="hadSub" value="${resource.hadSub}" />
-                     <input type="hidden" id="parentId" name="parentId" value="${resource.parentId}" />
-                     <input type="hidden" id="subCount" name="subCount" value="${subCount}" /> 
-                    <div class="control-group">
-                         <label class="control-label" ><span class="mandatory">*</span>资源名称</label>
-                         <div class="controls"><input type="text" id="name" value="${resource.name}" name="name" class="span12"/></div>
-                    </div>
-                    <div class="control-group">
-                         <label class="control-label" ><span class="mandatory">*</span>资源编码</label>
-                         <div class="controls"><input type="text" id="code" value="${resource.code}" name="code" class="span12"/></div>
-                    </div>
-                    <div class="control-group">
-                         <label class="control-label" >数据实体类</label>
-                         <div class="controls"><input type="text" id="className" name="className"  value="${resource.className}" class="span12"/></div>
-                    </div>
-                    <div class="control-group">
-                         <label class="control-label" >数据权限字段</label>
-                         <div class="controls"><input type="text" id="dataAuthorityCode" name="dataAuthorityCode" value="${resource.dataAuthorityCode}" class="span12"/></div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">上级资源</label>
-                        <div class="controls span6" style="border:1px solid;float:none;">
-                            <div id="resourceTree" class="ztree" ></div>
-                        </div>
-                    </div>
-	                <div class="control-group">
-	                    <label class="control-label" >资源URL</label>
-	                    <div class="controls"><input type="text" value="${resource.value}" name="value" class="span12"/></div>
-	                </div>
-	                <div class="control-group">
-	                    <label class="control-label" >资源排序号</label>
-	                    <div class="controls"><input type="number" value="${resource.sort}" name="sort" class="form-control"/></div>
-	                </div>
-	                <div class="control-group">
-	                	<label class="control-label" >按钮配置</label>
-	                    <div class="controls">
-	                    	<div class="button-parameter">
-	                        <#list subResources as button>  
-	                        	<div class="parameter-li"><i class="par-i"></i><input type="hidden" id="buttonId_${button_index}" value="${button.id}"><input type="text" id="buttonCode_${button_index}" style="width:15%;" class="span2" value="${button.code}"/><span>-</span><input type="text" id="buttonName_${button_index}" class="span2" style="width:15%;" value="${button.name}"/><span>-</span><input type="number" step="1" id="buttonSort_${button_index}"  class="span2" style="width:15%;" value="${button.sort}"/><span>-</span><select id="buttonOperation_${button_index}" class="mr10 span2" style="width:15%;"><option value="">选择操作类型</option><option value="1" <#if button.operationType == 1>selected="selected"</#if>>URL重定向</option><option value="2" <#if button.operationType == 2>selected="selected"</#if>>JS调转</option></select><span>-</span><input type="text" id="buttonUrl_${button_index}" class="span3" style="width:20%;" value="${button.value}"/><a href="#" class="parameter-delete" onclick="delButton(this);">删掉</a></div>
-	                        </#list>
-	                        </div>
-	                        <a class="add-cat add-cat-con" href="#"><span onclick="addButton();"><em>添加按钮</em></span></a>
-	                    </div>
-	                </div>
-                </form>
-                <!--内容 end-->
+<link rel="stylesheet" href="${basePath}/platform/css/tree/metroStyle.css" type="text/css">
+<script type="text/javascript" src="${basePath}/platform/tree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="${basePath}/platform/tree/jquery.ztree.excheck.min.js"></script>
+<article class="page-container">
+    <form id="formBean" class="form form-horizontal">
+        <input type="hidden" id="id" name="id" value="${resource.id}" />
+        <input type="hidden" id="status" name="status" value="${resource.status}" />
+        <input type="hidden" id="subResourcesJson" name="subResourcesJson" value="" />
+        <input type="hidden" id="parentName" name="parentName" value="${resource.parentName}" />
+        <input type="hidden" id="hadSub" name="hadSub" value="${resource.hadSub}" />
+        <input type="hidden" id="parentId" name="parentId" value="${resource.parentId}" />
+        <input type="hidden" id="subCount" name="subCount" value="${subCount}" />
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>资源名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" required minlength="2" maxlength="16" placeholder="请输入资源名称"  id="name" value="${resource.name}" name="name">
             </div>
-         </div>
-         <div class="row-fluid mt10">
-         	<div class="button-style bgfff radius-3">
-         		<@shiro.hasPermission name="sys:resource:edit:save"> 
-          			<button class="btn btn-save" onClick="saveOrUpdate()">保存</button>    
-       			</@shiro.hasPermission>
-       			<@shiro.hasPermission name="sys:resource:edit:cancel"> 
-          			<button class="btn btn-remove" onClick="openUrl('/platform/resource/list')">取消</button>
-       			</@shiro.hasPermission>
-       		</div>
-         </div>
-    </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>资源编码：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" required minlength="2" maxlength="16"  placeholder="请输入资源编码"  id="code" value="${resource.code}" name="code">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">资源图标：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" placeholder="请输入资源图标" id="icon" name="icon"  value="${resource.icon}" style="width: 50%;">&nbsp;&nbsp;&nbsp;&nbsp;<i class='Hui-iconfont ${resource.icon}'></i>
+            </div>
+        </div>
+       <#-- <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">数据实体类：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" placeholder="" id="className" name="className"  value="${resource.className}">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">数据权限字段：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" placeholder="" id="dataAuthorityCode" name="dataAuthorityCode" value="${resource.dataAuthorityCode}">
+            </div>
+        </div>-->
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">上级资源：</label>
+            <div class="formControls col-xs-8 col-sm-9" style="border:1px solid #ddd; width: 50%; margin-left: 15px;border-radius:4px;">
+                <div id="resourceTree" class="ztree" ></div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">资源URL：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" placeholder="" id="value" value="${resource.value}" name="value">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">资源排序号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="number" class="input-text radius" placeholder="" id="sort" value="${resource.sort}" name="sort">
+            </div>
+        </div>
+       <#-- <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">按钮配置：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <#list subResources as button>
+                    <div class="parameter-li"><i class="par-i"></i><input type="hidden" id="buttonId_${button_index}" value="${button.id}"><input type="text" id="buttonCode_${button_index}" style="width:15%;" class="span2" value="${button.code}"/><span>-</span><input type="text" id="buttonName_${button_index}" class="span2" style="width:15%;" value="${button.name}"/><span>-</span><input type="number" step="1" id="buttonSort_${button_index}"  class="span2" style="width:15%;" value="${button.sort}"/><span>-</span><select id="buttonOperation_${button_index}" class="mr10 span2" style="width:15%;"><option value="">选择操作类型</option><option value="1" <#if button.operationType == 1>selected="selected"</#if>>URL重定向</option><option value="2" <#if button.operationType == 2>selected="selected"</#if>>JS调转</option></select><span>-</span><input type="text" id="buttonUrl_${button_index}" class="span3" style="width:20%;" value="${button.value}"/><a href="#" class="parameter-delete" onclick="delButton(this);">删掉</a></div>
+				</#list>
+            </div>
+            <a class="add-cat add-cat-con" href="#"><span onclick="addButton();"><em>添加按钮</em></span></a>
+            </div>
+        </div>-->
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<@shiro.hasPermission name="sys:resource:edit:save">
+          			<button class="btn btn-primary radius">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				</@shiro.hasPermission>
+       			<#--<@shiro.hasPermission name="sys:resource:edit:cancel">
+          			<button class="btn btn-primary radius" onClick="openUrl('/platform/resource/list')">取消</button>
+				</@shiro.hasPermission>-->
+            </div>
+        </div>
+	</form>
+</article>
+<script type="text/javascript" src="${basePath}/hui/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="${basePath}/hui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="${basePath}/hui/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
 	<script type="text/javascript">
 	var i = $("#subCount").val();
 	var g = $("#subCount").val();
@@ -82,7 +95,7 @@
 	var setting = {
             async: {
                 enable: true,
-                url: tradeBasePath + "/platform/common/loadMenuResources",
+                url: basePath + "/platform/common/loadMenuResources",
                 otherParam:{"resourceId":resourceId},
                 dataFilter: null
             },
@@ -121,22 +134,41 @@
 		i++;
 		g++;
 	}
+
 	//删除角色
 	function delButton(obj) {
 		$(obj).parents('.parameter-li').remove();
 		g--;
 	}
-	
-	function saveOrUpdate() {
-		var rcflag = regBox.regCode.test($("#code").val());
-		if (!rcflag) {
-			$Y.tips("菜单编号输入有误");
-			return;
-		}
-		if (isNull($("#name").val())) {
-			$Y.tips("菜单名称不能为空");
-			return;
-		}
+
+    $("#formBean").validate({
+        onkeyup:false,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+            builerParams();
+            $(form).ajaxSubmit({
+                type : "POST",
+                url : "${basePath}/platform/resource/saveOrUpdate",
+                data : $('#formBean').serialize(),
+                error : function(request) {
+                    alert('操作失败');
+                },
+                success : function(data) {
+                    alert(data.result.msg);
+                   if (data.result.isSuccess) {
+                       window.parent.location.reload();
+                       var index = parent.layer.getFrameIndex(window.name);
+                       parent.layer.close(index);
+                    }
+                }
+            });
+        }
+    });
+
+
+
+    function builerParams() {
 		var subResources = [];
 		for (var j = 0; j < i; j++) {
 			var resource = new Object();
@@ -169,23 +201,7 @@
          	$("#parentId").val("");
 			$("#parentName").val("");
          }
-		$.ajax({
-			type : "POST",
-			url : "${tradeBasePath}/platform/resource/saveOrUpdate",
-			data : $('#formBean').serialize(),
-			error : function(request) {
-				$Y.tips("操作失败");
-			},
-			success : function(data) {
-				if (data.result.isSuccess) {
-					$Y.tips('操作成功');
-					var returnurl = "/platform/resource/list";
-					openUrl(returnurl);
-				}else{
-					$Y.tips(data.result.msg);
-				}
-			}
-		});
-	
+         /*var dataJson = $('#formBean').serializeArray();
+         console.log(JSON.stringify(dataJson))*/
 	}
 	</script>

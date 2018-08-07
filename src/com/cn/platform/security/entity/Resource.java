@@ -59,6 +59,11 @@ public class Resource extends BaseSQLEntity {
 	private Integer sort;
 
 	/**
+	 * 图标
+	 */
+	private String icon;
+
+	/**
 	 * 资源的操作方式 1:跳转action或页面的url 2:调用js function 3：其他<br>
 	 * SecurityContant.RESOURCE_OPEN_ACTION = 1;<br>
 	 * SecurityContant.RESOURCE_OPEN_FINCTION = 2;<br>
@@ -221,6 +226,14 @@ public class Resource extends BaseSQLEntity {
 
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	public String getDataAuthorityCode() {

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/carnation_server.iml" filepath="$PROJECT_DIR$/carnation_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebRoot/hui/lib/ueditor/1.4.3/jsp/jsp.iml" filepath="$PROJECT_DIR$/WebRoot/hui/lib/ueditor/1.4.3/jsp/jsp.iml" />
     </modules>
   </component>
 </project>

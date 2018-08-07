@@ -1,15 +1,6 @@
 $(function() {
-//	 $.ajax({
-//     	 url: tradeBasePath + '/platform/role/findResourceByParentCode',
-//     	 data:'code=jsgl',
-//         type: 'POST',
-//         success: function (data) {
-//              $(".operation-button").html(data);
-//         }
-//     });
 	search();
-	
-	hasButtonAuth();
+	//hasButtonAuth();
 });
 
 /**
@@ -23,14 +14,11 @@ $("#search").click(function(){
 
 function search(){
 	var searchValue = $("#searchValue").val();
-	$(".pagination.pagination-right.pagination-style").pagination({
-		url : tradeBasePath + "/platform/role/findListByPage",
-		params : {
-			"params['searchValue']" : searchValue
-		},
-		successCallback : function(data) {
+    $.ajax({
+		url : basePath + "/platform/role/findListByPage",
+        success : function(data) {
 			var k = 0;
-			var tbody = $(".list-data");
+            var tbody = $("#tbody_data");
 			var html="";
 			// 清空
 			tbody.empty();

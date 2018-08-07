@@ -12,7 +12,7 @@
         <div class="container-fluid cl">
             <a class="logo navbar-logo f-l mr-10 hidden-xs" href="javascrpt:window.location.reload(true);">康乃馨APP管理后台</a>
            <#-- <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a>
-            <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+            <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml"> H-ui</a>
             <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>-->
 
@@ -61,7 +61,7 @@
         <#list menuList as resource>
             <#--<@shiro.hasPermission name="${resource.code}">-->
                 <dl id="menu-article">
-                    <dt onclick="childMenu(this,'${resource.id}')"><i class="Hui-iconfont">&#xe616;</i> ${resource.name}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+                    <dt onclick="childMenu(this,'${resource.id}')"><i class="Hui-iconfont ${resource.icon}"></i> ${resource.name}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                     <dd id="menu_${resource.id}"></dd>
                 </dl>
            <#-- </@shiro.hasPermission>-->
@@ -194,7 +194,7 @@
                     if(data.length > 0){
                         html += "<ul>";
                         for (var i = 0; i < data.length; i++){
-                            html += "<li id='"+data[i].id+"'><a data-href='"+basePath+data[i].value+"' data-title='"+data[i].name+"' href='javascript:;'>"+data[i].name+"</a></li>";
+                            html += "<li id='"+data[i].id+"'><a data-href='"+basePath+data[i].value+"' data-title='"+data[i].name+"' href='javascript:;'><i class='Hui-iconfont " + data[i].icon + "'></i> "+data[i].name+"</a></li>";
                         }
                         html += "</ul>";
                         console.log(html);

@@ -266,15 +266,19 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, String> imple
 				sb.append(resourceId);
 			}
 
-			String subResourceIds = resourceDao.findAllSubIdByParentId(sb.toString());
-			if (StringUtils.isNotBlank(subResourceIds)) {
-				String[] subResourceIdArray = subResourceIds.split(",");
-				List<String> subResourceList = Arrays.asList(subResourceIdArray);
-				delResourceIds.addAll(subResourceList);
-			}
+			try {
+				String subResourceIds = resourceDao.findAllSubIdByParentId(sb.toString());
+				if (StringUtils.isNotBlank(subResourceIds)) {
+					String[] subResourceIdArray = subResourceIds.split(",");
+					List<String> subResourceList = Arrays.asList(subResourceIdArray);
+					delResourceIds.addAll(subResourceList);
+				}
 
-			roleResourceDao.deleteByResourceIds(delResourceIds);
-			resourceDao.deleteByIds(delResourceIds);
+				roleResourceDao.deleteByResourceIds(delResourceIds);
+				resourceDao.deleteByIds(delResourceIds);
+			}catch (Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 

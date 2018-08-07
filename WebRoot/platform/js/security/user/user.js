@@ -1,14 +1,6 @@
 $(function() {
 	search();
-//	$.ajax({
-//		url : tradeBasePath + '/platform/user/findResourceByParentCode',
-//		data : 'code=zhlb',
-//		type : 'POST',
-//		success : function(data) {
-//			$(".operation-button").html(data);
-//		}
-//	});
-	hasButtonAuth();
+	//hasButtonAuth();
 });
 
 /**
@@ -21,14 +13,11 @@ $("#search").click(function() {
 
 function search(){
 	var searchValue = $("#searchValue").val();
-	$(".pagination.pagination-right.pagination-style").pagination({
-		url : tradeBasePath + "/platform/user/findListByPage",
-		params : {
-			"params['searchValue']" : searchValue
-		},
-		successCallback : function(data) {
+    $.ajax({
+		url : basePath + "/platform/user/findListByPage",
+        success : function(data) {
 			var k = 0;
-			var tbody = $(".list-data");
+            var tbody = $("#tbody_data");
 			var html = "";
 			// 清空
 			tbody.empty();
@@ -92,14 +81,14 @@ function toDelete() {
 	ids = ids.substring(0, ids.length - 1);
 	if (confirm("确定删除")) {
 		$.ajax({
-			url : tradeBasePath + "/platform/user/toDelete?ids=" + ids,
+			url : basePath + "/platform/user/toDelete?ids=" + ids,
 			type : 'POST',
 			error : function(request) {
 				alert("操作失败");
 			},
 			success : function(data) {
 				var url = "/platform/user/list";
-				var returnurl = tradeBasePath + url;
+				var returnurl = basePath + url;
 				alert(data.message);
 				openUrl(url); 
 			}
@@ -109,16 +98,14 @@ function toDelete() {
 }
 
 function toAdd() {
-	$.ajax({
-		url : tradeBasePath + "/platform/user/toAdd",
-		type : 'POST',
-		error : function(request) {
-			alert("操作失败");
-		},
-		success : function(data) {
-			$("#content").html(data);
-		}
-	});
+    var url = basePath + "/platform/user/toAdd";
+    var title = "新增用户";
+    var index = layer.open({
+        type:2,
+        title:title,
+        content:url
+    });
+    layer.full(index);
 }
 
 function toEdit() {
@@ -138,7 +125,7 @@ function toEdit() {
 	}
 	ids = ids.substring(0, ids.length - 1);
 	$.ajax({
-		url : tradeBasePath + "/platform/user/toEdit?id=" + ids,
+		url : basePath + "/platform/user/toEdit?id=" + ids,
 		type : 'POST',
 		error : function(request) {
 			alert("操作失败");
