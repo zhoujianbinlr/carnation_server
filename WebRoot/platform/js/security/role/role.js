@@ -22,7 +22,6 @@ function search(){
 			var html="";
 			// 清空
 			tbody.empty();
-			var ul = "<ul>";
 			$(data.list).each(function(i, n) {
 				k++;
 				var d = new Date(n.ct);    //根据时间戳生成的时间对象
@@ -32,7 +31,7 @@ function search(){
 				           (d.getHours()) + ":" + 
 				           (d.getMinutes()) + ":" + 
 				           (d.getSeconds());
-				html+='<tr>';
+                html+='<tr class=\"text-c\">';
 				html+='<td>' + "<input type='checkbox' name='check' value='"+n.id+"'>" + "</td>";
 				html+='<td>' + k + "</td>";
 				html+='<td>' + n.roleCode + "</td>";
@@ -57,10 +56,9 @@ function toDelete(){
       return;
     }
     ids=ids.substring(0,ids.length-1);
-	if(confirm("确定删除"))
-	 {
+	if(confirm("确定删除")){
 		$.ajax({
-			url : tradeBasePath + "/platform/role/toDelete?id="+ids,
+			url : basePath + "/platform/role/toDelete?id="+ids,
 	        type: 'POST',
 	        error: function(request) {
 	            alert("操作失败");
@@ -76,16 +74,14 @@ function toDelete(){
 }
 
 function toAdd(){
-	$.ajax({
-		url : tradeBasePath + "/platform/role/toAdd",
-        type: 'POST',
-        error: function(request) {
-            alert("操作失败");
-         },
-        success: function (data) {
-           $("#content").html(data);
-        }
+    var url = basePath + "/platform/role/toAdd";
+    var title = "资源更新";
+    var index = layer.open({
+        type:2,
+        title:title,
+        content:url
     });
+    layer.full(index);
 }
 
 function toEdit(){
@@ -104,16 +100,15 @@ function toEdit(){
          return;
        }
        ids=ids.substring(0,ids.length-1);
-       $.ajax({
-     	 url: tradeBasePath + "/platform/role/toEdit?id="+ids,
-         type: 'POST',
-         error: function(request) {
-            alert("操作失败");
-         },
-         success: function (data) {
-              $("#content").html(data);
-         }
-     });
+
+		var url = basePath + "/platform/role/toEdit?id="+ids;
+		var title = "资源更新";
+		var index = layer.open({
+			type:2,
+			title:title,
+			content:url
+		});
+		layer.full(index);
 }
 
 

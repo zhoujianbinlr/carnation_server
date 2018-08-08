@@ -14,13 +14,13 @@
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
-            <@shiro.hasPermission name="sys:resource:list:create">
+            <@shiro.hasPermission name="sys:role:list:create">
                 <a href="javascript:toAdd();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>新增角色</a>
             </@shiro.hasPermission>
-            <@shiro.hasPermission name="sys:resource:list:update">
+            <@shiro.hasPermission name="sys:role:list:update">
                 <a href="javascript:toEdit();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe60c;</i>修改角色</a>
             </@shiro.hasPermission>
-            <@shiro.hasPermission name="sys:resource:list:delete">
+            <@shiro.hasPermission name="sys:role:list:delete">
                 <a href="javascript:toDelete();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6e2;</i>删除角色</a>
             </@shiro.hasPermission>
         </span>

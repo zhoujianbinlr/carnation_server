@@ -67,8 +67,8 @@ CREATE TABLE `BIZ_MERCHANT_APPLICATION` (
   `APP_SECRET` varchar(50) DEFAULT NULL COMMENT 'APP Secret',
   `MASTER_SECRET` varchar(50) DEFAULT NULL COMMENT 'Master Secret',
   `PUBLIC_KEY` varchar(2000) DEFAULT NULL COMMENT '商户公钥,支付平台用此公钥对商户发起的交易数据进行验签',
-  `APP_PUBLIC_KEY` varchar(2000) DEFAULT NULL COMMENT '阳光康众支付平台公钥',
-  `APP_PRIVATE_KEY` varchar(2000) DEFAULT NULL COMMENT '阳光康众支付平台私钥',
+  `APP_PUBLIC_KEY` varchar(2000) DEFAULT NULL COMMENT '支付平台公钥',
+  `APP_PRIVATE_KEY` varchar(2000) DEFAULT NULL COMMENT '支付平台私钥',
   `STATUS` int(11) DEFAULT '1' COMMENT '状态，0停用、1启用',
   `CP` varchar(32) DEFAULT NULL,
   `CP_NAME` varchar(100) DEFAULT NULL,
@@ -115,7 +115,7 @@ INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('7d793ebafa4543ff969888d03a895e0d', 'wec
 INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('90780ee8e79c4e128f217a490f624be9', 'unionpay_ds', '14', '银联代收', '/platform/images/demo.png', '移动网页', 'T+1', '3', '12', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32');
 INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('9273a2ca34524d67b3fdb7ac75178256', 'alipay_app', '9', '支付宝APP', '/platform/images/demo.png', '移动网页', 'T+1', '3', '7', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32');
 INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('ba2bfdc9-c78a-407a-8d3f-fbe05452', 'wechat_jsapi', '1', '微信支付(普通商户)', '/platform/images/demo.png', '移动网页', 'T+1', '3', '1', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-13 10:58:27', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-13 10:58:30');
-INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('bbee1b1ab88c4d3f956d03f2f56a22b8', 'sunshien_instcard', '16', '阳光康众医保支付', '/platform/images/demo.png', '移动网页', 'T+1', '3', '14', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32');
+INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('bbee1b1ab88c4d3f956d03f2f56a22b8', 'sunshien_instcard', '16', '医保支付', '/platform/images/demo.png', '移动网页', 'T+1', '3', '14', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32');
 INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('ccd8e93ec46a4f8a96b38106337e46a3', 'wechat_h5', '5', '微信H5', '/platform/images/demo.png', '移动网页', 'T+1', '3', '3', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32');
 INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('d4f52fa4cc7c49a3a7e58b4449ea76b8', 'wechat_scan_code', '4', '微信扫码', '/platform/images/demo.png', '移动网页', 'T+1', '3', '5', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-25 16:51:32');
 INSERT INTO `BIZ_TRADE_CHANNEL` VALUES ('d901e763f42a4d278ccb7f521a0dc9fc', 'sunshien_wallet', '15', '医程通钱包', '/platform/images/demo.png', '移动网页', 'T+1', '5', '13', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-08 10:58:27', '02cc58cc32834e8890e6a4b971cba7fd', 'admin', '2017-09-08 10:58:30');

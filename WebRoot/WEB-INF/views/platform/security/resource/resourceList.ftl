@@ -16,14 +16,12 @@
             <@shiro.hasPermission name="sys:resource:list:create">
                 <a href="javascript:toAdd();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>新增资源</a>
             </@shiro.hasPermission>
-            <#--<@shiro.hasPermission name="sys:resource:list:update">
+            <@shiro.hasPermission name="sys:resource:list:update">
                 <a href="javascript:toEdit();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe60c;</i>修改资源</a>
-            </@shiro.hasPermission>-->
-            <a href="javascript:toEdit();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe60c;</i>修改资源</a>
-            <#--<@shiro.hasPermission name="sys:resource:list:delete">
+            </@shiro.hasPermission>
+            <@shiro.hasPermission name="sys:resource:list:delete">
                 <a href="javascript:toDelete();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6e2;</i>删除资源</a>
-            </@shiro.hasPermission>-->
-            <a href="javascript:toDelete();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6e2;</i>删除资源</a>
+            </@shiro.hasPermission>
         </span>
     </div>
     <div class="mt-20">

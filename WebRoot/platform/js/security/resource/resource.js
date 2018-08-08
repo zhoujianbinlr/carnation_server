@@ -21,7 +21,6 @@ function search(){
             var html="";
             // 清空
             tbody.empty();
-            var ul = "<ul>";
             $(data.list).each(function(i, n) {
                 var parentName ="";
                 var value = "";

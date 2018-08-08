@@ -1,13 +1,3 @@
-/**
- 
-
-
-
- *  <p> Created on 2017年9月20日</p>
-
- 
- 
- */
 package com.cn.restful.dto.response;
 
 import com.cn.restful.dto.TradeParams;

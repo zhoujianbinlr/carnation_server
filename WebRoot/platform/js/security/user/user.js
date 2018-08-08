@@ -21,7 +21,6 @@ function search(){
 			var html = "";
 			// 清空
 			tbody.empty();
-			var ul = "<ul>";
 			$(data.list).each(function(i, n) {
 				var type = (n.type == 1 ? "平台" : "商户");
 				var status = n.status;
@@ -51,7 +50,7 @@ function search(){
 				(d.getHours()) + ":" +
 				(d.getMinutes()) + ":" +
 				(d.getSeconds());
-				html += '<tr>';
+                html+='<tr class=\"text-c\">';
 				html += '<td>' + "<input type='checkbox' name='check' value='" + n.id + "'>" + "</td>";
 				html += '<td>' + k + "</td>";
 				html += '<td>' + n.account + "</td>";

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import com.cn.framework.config.SystemConfig;
 
 /**
- * @Project ChuFangLiuZhuan_PlatForm
+ * @Project
  * @Package com.cn.common.init
  * @ClassName InitAppDataBean.java
  * @Description 系统数据初始化

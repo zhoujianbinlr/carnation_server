@@ -1,13 +1,3 @@
-/**
- 
-
- *  <P>  Copyright(C)版权所有 - 2014 广州医享网络科技发展有限公司.</p>
- *  <p>  All rights reserved.</p>
- *  <p> Created on 2015年1月26日</p>
- *  <p> Created by 申午武</p>
- 
- 
- */
 package com.cn.restful.utils;
 
 import java.lang.reflect.Field;

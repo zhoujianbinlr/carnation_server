@@ -1,13 +1,3 @@
-/**
- 
-
- *  <P> Copyright 2014 . </p>
-
- *  <p> Created on 2017年10月29日</p>
- *  <p> Created by shitou</p>
- 
- 
- */
 package com.cn.mobileapp.invoke;
 
 import java.util.Map;

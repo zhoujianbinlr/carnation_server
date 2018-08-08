@@ -1,19 +1,9 @@
-/**
- 
-
- *  <P> Copyright 2017 阳光康众</p>
-
- *  <p> Created on 2017年7月9日</p>
- *  <p> Created by zhoujb</p>
- 
- 
- */
 package com.cn.common;
 
 import com.cn.framework.common.mybatisgenerator.CombaGeneratorTools;
 
 /**
- * @Project ChuFangLiuZhuan_PlatForm
+ * @Project
  * @Package com.cn.framework.common.mybatisgenerator
  * @ClassName CombaGenerator.java
  * @Description

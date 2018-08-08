@@ -5,7 +5,7 @@ import java.util.Date;
 import com.cn.framework.mvc.mysql.entity.BaseSQLEntity;
 
 /**
-* @Project ChuFangLiuZhuan_PlatForm_Platorm
+* @Project _Platorm
 * @Package com.cn.platform.security.entity
 * @ClassName com.cn.platform.security.entity.Family
 * @TableName BIZ_FAMILY

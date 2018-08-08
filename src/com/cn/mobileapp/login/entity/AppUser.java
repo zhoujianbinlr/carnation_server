@@ -1,19 +1,9 @@
-/**
-* <html>
-*
-*   <P> Copyright 2017 阳光康众 </p>
-*
-*   <p> Created on 2017年9月6日</p>
-*   <p> Created by Administrator</p>
-*  </body>
-* </html>
-*/
 package com.cn.mobileapp.login.entity;
 
 import com.cn.framework.mvc.mysql.entity.BaseSQLEntity;
 
 /**
-* @Project ChuFangLiuZhuan_PlatForm_Platorm
+* @Project _Platorm
 * @Package com.cn.platform.security.entity
 * @ClassName com.cn.platform.security.entity.AppUser
 * @TableName BIZ_USER

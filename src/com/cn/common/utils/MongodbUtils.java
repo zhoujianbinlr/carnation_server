@@ -1,13 +1,3 @@
-/**
- 
-
- *  <P> Copyright 2014 . </p>
-
- *  <p> Created on 2017年11月30日下午2:57:49</p>
- *  <p> Created by zhoujb</p>
- 
- 
- */
 package com.cn.common.utils;
 
 import java.util.ArrayList;

@@ -1,13 +1,4 @@
-/**
- 
 
- *  <P> Copyright 2017 阳光康众</p>
-
- *  <p> Created on 2017年7月1日</p>
- *  <p> Created by zhoujb</p>
- 
- 
- */
 package com.cn.common.datas.cache.platform.security;
 
 import org.slf4j.Logger;
@@ -19,7 +10,7 @@ import com.cn.framework.cache.redis.RedisService;
 import com.cn.framework.common.spring.ext.SpringContextHolder;
 
 /**
- * @Project ChuFangLiuZhuan_PlatForm
+ * @Project
  * @Package com.cn.cache.platform
  * @ClassName SecurityCacheManger.java
  * @Description

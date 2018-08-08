@@ -101,7 +101,7 @@
       (#{resource.id,jdbcType=VARCHAR},#{resource.name,jdbcType=VARCHAR},#{resource.remark,jdbcType=VARCHAR}, 
       #{resource.type,jdbcType=VARCHAR},#{resource.status,jdbcType=INTEGER},#{resource.code,jdbcType=VARCHAR},
       #{resource.operationType,jdbcType=INTEGER},#{resource.value,jdbcType=VARCHAR},#{resource.sort,jdbcType=VARCHAR},
-      #{icon,jdbcType=VARCHAR},#{resource.parentId,jdbcType=VARCHAR},#{resource.cp,jdbcType=VARCHAR},
+      #{resource.icon,jdbcType=VARCHAR},#{resource.parentId,jdbcType=VARCHAR},#{resource.cp,jdbcType=VARCHAR},
       #{resource.cpName,jdbcType=VARCHAR}, #{resource.ct,jdbcType=TIMESTAMP}, #{resource.ep,jdbcType=VARCHAR}, #{resource.epName,jdbcType=VARCHAR}, 
       #{resource.et,jdbcType=TIMESTAMP},#{resource.className,jdbcType=VARCHAR} , #{resource.dataAuthorityCode,jdbcType=VARCHAR})
     </foreach>

@@ -1,19 +1,10 @@
-/**
- 
 
- *  <P> Copyright 2017 阳光康众</p>
-
- *  <p> Created on 2017年7月1日</p>
- *  <p> Created by zhoujb</p>
- 
- 
- */
 package com.cn.common.datas.cache;
 
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @Project ChuFangLiuZhuan_PlatForm
+ * @Project
  * @Package com.cn.cache
  * @ClassName CacheConstant.java
  * @Description

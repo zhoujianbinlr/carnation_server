@@ -1,13 +1,3 @@
-/**
- 
-
-
-
-
-
-
- 
- */
 package com.cn.trade.controller;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,13 +1,3 @@
-/**
- 
-
- *  <P> Copyright 2014 . </p>
-
- *  <p> Created on 2017年9月15日</p>
- *  <p> Created by hqy</p>
- 
- 
- */
 package com.cn.platform;
 
 /**
@@ -206,22 +196,22 @@ public class TradeChannelConstants {
 	public final static int TRADE_CHANNEL_UNIONPAY_DS_VALUE = 14;
 
 	/**
-	 * 阳光康众钱包支付
+	 * 钱包支付
 	 */
 	public final static String TRADE_CHANNEL_SUNSHIEN_WALLET = TRADE_SUNSHIEN_IDENTITY.concat("_wallet");
 
 	/**
-	 * 阳光康众钱包支付值
+	 * 钱包支付值
 	 */
 	public final static int TRADE_CHANNEL_SUNSHIEN_WALLET_VALUE = 15;
 
 	/**
-	 * 阳光康众医保支付
+	 * 医保支付
 	 */
 	public final static String TRADE_CHANNEL_SUNSHIEN_INSTCARD = TRADE_SUNSHIEN_IDENTITY.concat("_instcard");
 
 	/**
-	 * 阳光康众医保支付值
+	 * 医保支付值
 	 */
 	public final static int TRADE_CHANNEL_SUNSHIEN_INSTCARD_VALUE = 16;
 

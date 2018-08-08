@@ -1,13 +1,3 @@
-/**
- 
-
-
-
- *  <p> Created on 2017年10月26日</p>
-
- 
- 
- */
 package com.cn.mobileapp.recharge.entity;
 
 import java.io.Serializable;

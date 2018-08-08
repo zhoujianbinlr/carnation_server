@@ -1,13 +1,3 @@
-/**
- 
-
- *  <P>  Copyright 2017 阳光康众</p>
- *  <p>  All rights reserved.</p>
- *  <p> Created on 2016-4-6</p>
- *  <p> Created by 于策</p>
- 
- 
- */
 package com.cn.common;
 
 import java.text.ParseException;

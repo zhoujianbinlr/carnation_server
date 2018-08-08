@@ -1,4 +1,5 @@
 <#include "common/common.ftl">
+<#include "common/validationCommon.ftl">
 <#assign shiro=JspTaglibs["/WEB-INF/tlds/shiro.tld"]/>
 <link rel="stylesheet" href="${basePath}/platform/css/tree/metroStyle.css" type="text/css">
 <script type="text/javascript" src="${basePath}/platform/tree/jquery.ztree.core.min.js"></script>
@@ -60,18 +61,32 @@
                 <input type="number" class="input-text radius" placeholder="" id="sort" value="${resource.sort}" name="sort">
             </div>
         </div>
-       <#-- <div class="row cl">
+       <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">按钮配置：</label>
-            <div class="formControls col-xs-8 col-sm-9">
+            <div class="formControls col-xs-8 col-sm-9 button-parameter">
+                <a class="btn btn-secondary radius" href="javascript:addButton();">添加按钮</a>
                 <#list subResources as button>
-                    <div class="parameter-li"><i class="par-i"></i><input type="hidden" id="buttonId_${button_index}" value="${button.id}"><input type="text" id="buttonCode_${button_index}" style="width:15%;" class="span2" value="${button.code}"/><span>-</span><input type="text" id="buttonName_${button_index}" class="span2" style="width:15%;" value="${button.name}"/><span>-</span><input type="number" step="1" id="buttonSort_${button_index}"  class="span2" style="width:15%;" value="${button.sort}"/><span>-</span><select id="buttonOperation_${button_index}" class="mr10 span2" style="width:15%;"><option value="">选择操作类型</option><option value="1" <#if button.operationType == 1>selected="selected"</#if>>URL重定向</option><option value="2" <#if button.operationType == 2>selected="selected"</#if>>JS调转</option></select><span>-</span><input type="text" id="buttonUrl_${button_index}" class="span3" style="width:20%;" value="${button.value}"/><a href="#" class="parameter-delete" onclick="delButton(this);">删掉</a></div>
+                    <div class="parameter-li mt-10">
+                        <input type="hidden" id="buttonId_${button_index}" value="${button.id}">
+                        <input type="text" id="buttonCode_${button_index}" style="width:15%;" class="input-text radius" value="${button.code}">
+                        <input type="text" id="buttonName_${button_index}" class="input-text radius" style="width:15%;" value="${button.name}">
+                        <input type="text" id="buttonIcon_${button_index}" class="input-text radius" style="width:15%;" value="${button.icon}">
+                        <input type="number" step="1" id="buttonSort_${button_index}"  class="input-text radius" style="width:6%;" value="${button.sort}">
+                        <span class="select-box radius" style="width:15%;">
+                            <select id="buttonOperation_${button_index}" class="select radius">
+                                <option value="">选择操作类型</option>
+                                <option value="1" <#if button.operationType == 1>selected="selected"</#if>>URL重定向</option>
+                                <option value="2" <#if button.operationType == 2>selected="selected"</#if>>JS调转</option>
+                            </select>
+                        </span>
+                        <input type="text" id="buttonUrl_${button_index}" class="input-text radius" style="width:20%;" value="${button.value}"/>
+                        <a href="#" class="btn btn-secondary radius" onclick="delButton(this);">删掉</a>
+                    </div>
 				</#list>
             </div>
-            <a class="add-cat add-cat-con" href="#"><span onclick="addButton();"><em>添加按钮</em></span></a>
-            </div>
-        </div>-->
+        </div>
 
-        <div class="row cl">
+        <div class="row cl pd-5 bg-1 bk-gray mt-20">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<@shiro.hasPermission name="sys:resource:edit:save">
           			<button class="btn btn-primary radius">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
@@ -83,9 +98,7 @@
         </div>
 	</form>
 </article>
-<script type="text/javascript" src="${basePath}/hui/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-<script type="text/javascript" src="${basePath}/hui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="${basePath}/hui/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
 
 	<script type="text/javascript">
 	var i = $("#subCount").val();
@@ -116,19 +129,16 @@
 	//添加角色
 	function addButton() {
 		var html = '';
-		html += '<div class="parameter-li">';
+		html += '<div class="parameter-li mt-10">';
 		html += '<i class="par-i"></i>';
-		html += '<input type="text" class="span2" style="width:15%;" id="buttonCode_'
-				+ i
-				+ '" placeholder="按钮编号"/><span>-</span><input type="text" class="span2" style="width:15%;" id="buttonName_'
-				+ i
-				+ '" placeholder="按钮名称"/><span>-</span><input type="number" step="1" id="buttonSort_'
-				+ i
-				+ '" class="span2" style="width:15%;" placeholder="按钮排序"/><span>-</span><select id="buttonOperation_'
-				+ i
-				+ '" class="mr10 span2" style="width:15%;"><option value="">选择操作类型</option><option value="1">URL重定向</option><option value="2">JS调转</option></select><span>-</span><input type="text" id="buttonUrl_'
-				+ i + '" class="span3" style="width:20%;" placeholder="按钮URL"/>';
-		html += '<a href="#" class="parameter-delete" onclick="delButton(this);" style="right:3px;">删掉</a>';
+		html += '<input type="text" class="input-text radius" style="width:15%;" id="buttonCode_'+ i + '" placeholder="按钮编号"/>' +
+                '<input type="text" class="input-text radius" style="width:15%;" id="buttonName_' + i + '" placeholder="按钮名称"/>' +
+                '<input type="text" class="input-text radius" style="width:15%;" id="buttonIcon_' + i + '" placeholder="按钮图标"/>' +
+                '<input type="number" step="1" id="buttonSort_' + i + '" class="input-text radius" style="width:6%;" placeholder="排序"/>' +
+                '<span class="select-box radius" style="width:15%;"><select id="buttonOperation_' + i + '" class="select radius">' +
+                '<option value="">选择操作类型</option><option value="1">URL重定向</option><option value="2">JS调转</option></select></span>' +
+                '<input type="text" id="buttonUrl_' + i + '" class="input-text radius" style="width:20%;" placeholder="按钮URL"/>';
+		html += '<a href="#" class="btn btn-secondary radius" onclick="delButton(this);" style="right:3px;">删掉</a>';
 		html += '</div>';
 		$('.button-parameter').append(html);
 		i++;
@@ -185,6 +195,7 @@
 			resource.name = $('#buttonName_' + j).val();
 			resource.value = $('#buttonUrl_' + j).val();
 			resource.sort = $('#buttonSort_' + j).val();
+            resource.icon = $('#buttonIcon_' + j).val();
 			resource.operationType = $('#buttonOperation_' + j).val();
 			subResources.push(resource);
 		}

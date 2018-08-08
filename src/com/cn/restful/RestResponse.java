@@ -1,13 +1,3 @@
-/**
- 
-
-
-
- *  <p> Created on 2017年9月15日</p>
-
- 
- 
- */
 package com.cn.restful;
 
 import java.io.Serializable;

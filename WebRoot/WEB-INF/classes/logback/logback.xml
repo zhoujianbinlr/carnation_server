@@ -258,15 +258,15 @@
   
   <!-- spring -->
   <logger name="org.springframework.web" level="DEBUG" />
-  <logger name="org.springframework.web.servlet.mvc.method.annotation" level="DEBUG" />
-  <logger name="com.alibaba.dubbo" level="DEBUG" />
-  <logger name="org.mybatis.spring" level="DEBUG" />
+  <logger name="org.springframework.web.servlet.mvc.method.annotation" level="INFO" />
+  <logger name="com.alibaba.dubbo" level="INFO" />
+  <logger name="org.mybatis.spring" level="INFO" />
   <logger name="org.mybatis" level="DEBUG" />
   <logger name="com.cn" level="DEBUG" />
-  <logger name="com.cn.task.biz" level="DEBUG" >
+  <logger name="com.cn.task.biz" level="INFO" >
     <appender-ref ref="carnation_task" />
   </logger>
-  <logger name="com.cn.restful" level="DEBUG" >
+  <logger name="com.cn.restful" level="INFO" >
     <appender-ref ref="carnation_restful" />
   </logger>
 

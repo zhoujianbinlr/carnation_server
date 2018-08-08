@@ -1,13 +1,3 @@
-/**
- 
-
-
-
- *  <p> Created on 2017年9月14日</p>
-
- 
- 
- */
 package com.cn.common;
 
 import java.text.DateFormat;

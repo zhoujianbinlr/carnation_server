@@ -1,13 +1,4 @@
-/**
- 
 
- *  <P> Copyright 2017 阳光康众</p>
-
- *  <p> Created on 2017年7月10日</p>
- *  <p> Created by zhoujb</p>
- 
- 
- */
 package com.cn.common.service.impl;
 
 import java.util.List;
@@ -20,7 +11,7 @@ import com.cn.common.vo.TreeNodeVo;
 import com.cn.framework.common.spring.ext.SpringContextHolder;
 
 /**
- * @Project ChuFangLiuZhuan_PlatForm
+ * @Project
  * @Package com.cn.common.service.impl
  * @ClassName CommonServiceImpl.java
  * @Description

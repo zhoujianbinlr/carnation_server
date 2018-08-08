@@ -27,7 +27,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 
 /**
- * @Project ChuFangLiuZhuan_PlatForm
+ * @Project
  * @Package com.cn.common.controller
  * @ClassName BasePlatformController.java
  * @Description 后台控制类基类

@@ -1,55 +1,48 @@
+<#include "common/common.ftl">
+<#include "common/validationCommon.ftl">
 <#assign shiro=JspTaglibs["/WEB-INF/tlds/shiro.tld"]/>
-<#include "/platform/common/common.ftl">
-		<link rel="stylesheet" href="${tradeBasePath}/platform/css/tree/metroStyle.css" type="text/css">
-	<script type="text/javascript" src="${tradeBasePath}/platform/js/tree/jquery.ztree.core.min.js"></script>
-	<script type="text/javascript" src="${tradeBasePath}/platform/js/tree/jquery.ztree.excheck.min.js"></script>
-    <div id="content-header">
-        <div class="widget-title radius-3"><h3 class="title">新增/修改角色</h3></div>
-    </div>
-    <div class="container-fluid">
-         <div class="row-fluid">
-            <div class="widget-content radius-3">
-                <!--内容-->
-                <form id="formBean" class="form-horizontal">  
-                    <input type="hidden" id="id" name="id" value="${role.id}" /> 
-                    <input type="hidden" id="status" name="status" value="${role.status}" /> 
-                    <input type="hidden" id="resourceIds" name="resourceIds" value="" /> 
-                    <div class="control-group">
-                         <label class="control-label" ><span class="mandatory">*</span>角色编号</label>
-                         <div class="controls"><input type="text" id="roleCode" name="roleCode" value="${role.roleCode}" class="span6"/></div>
-                    </div>
-                    <div class="control-group">
-                         <label class="control-label" ><span class="mandatory">*</span>角色名称</label>
-                         <div class="controls"><input type="text" id="roleName" name="roleName" value="${role.roleName}" class="span6"/></div>
-                    </div>
-                    <div class="space10"></div>
-                    <div class="control-group">
-                    	<label class="control-label" >角色授权</label>
-                    	<div class="controls span6" style="border:1px solid;float:none;">
-                    		<div id="resourceTree" class="ztree" ></div>
-                    	</div>
-                    </div>
-                </form>
-                <!--内容 end-->
+<link rel="stylesheet" href="${basePath}/platform/css/tree/metroStyle.css" type="text/css">
+<script type="text/javascript" src="${basePath}/platform/tree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="${basePath}/platform/tree/jquery.ztree.excheck.min.js"></script>
+<article class="page-container">
+    <form id="formBean" class="form form-horizontal">
+        <input type="hidden" id="id" name="id" value="${role.id}" />
+        <input type="hidden" id="status" name="status" value="${role.status}" />
+        <input type="hidden" id="resourceIds" name="resourceIds" value="" />
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" required minlength="2" maxlength="16" placeholder="请输入角色编号"  id="roleCode" value="${role.roleCode}" name="roleCode">
             </div>
-         </div>
-         <div class="row-fluid mt10">
-         	<div class="button-style bgfff radius-3">
-         		<@shiro.hasPermission name="sys:role:edit:save"> 
-          			<button class="btn btn-save" onClick="saveOrUpdate()">保存</button>    
-       			</@shiro.hasPermission>
-       			<@shiro.hasPermission name="sys:role:edit:cancel"> 
-          			<button class="btn btn-remove" onClick="openUrl('/platform/role/list')">取消</button>
-       			</@shiro.hasPermission>
-       		</div>
-         </div>
-    </div>
-    <script>    
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text radius" required minlength="2" maxlength="16" placeholder="请输入角色名称"  id="roleName" value="${role.roleName}" name="roleName">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">上级资源：</label>
+            <div class="formControls col-xs-8 col-sm-9" style="border:1px solid #ddd; width: 50%; margin-left: 15px;border-radius:4px;">
+                <div id="resourceTree" class="ztree" ></div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<@shiro.hasPermission name="sys:role:edit:save">
+                    <button class="btn btn-primary radius">保存</button>
+                </@shiro.hasPermission>
+                <button class="btn btn-primary radius">保存</button>
+            </div>
+        </div>
+    </form>
+</article>
+    <script>
         var roleId = '${role.id}';
 		var setting = {
 		    async: {
 				enable: true,
-				url: tradeBasePath + "/platform/common/loadResources",
+				url: basePath + "/platform/common/loadResources",
 				autoParam:["id=pId", "name", "level"],
 				otherParam:{"roleId":roleId,"loadType":"1"},
 				dataFilter: null
@@ -79,35 +72,34 @@
 			return resourceIdArray;
 		}
 
-		function saveOrUpdate() {
-			var rcflag = regBox.regName.test($("#roleCode").val());
-			if (!rcflag) {
-				$Y.tips("角色编号输入有误");
-				return;
-			}
-			if (isNull($("#roleName").val())) {
-				$Y.tips("角色名称不能为空");
-				return;
-			}
+        $("#formBean").validate({
+            onkeyup:false,
+            focusCleanup:true,
+            success:"valid",
+            submitHandler:function(form){
+                builerParams();
+                $(form).ajaxSubmit({
+                    type : "POST",
+                    url : "${basePath}/platform/role/saveOrUpdate",
+                    data : $('#formBean').serialize(),
+                    error : function(request) {
+                        alert('操作失败');
+                    },
+                    success : function(data) {
+                        alert(data.result.msg);
+                        if (data.result.isSuccess) {
+                            window.parent.location.reload();
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        }
+                    }
+                });
+            }
+        });
+
+		function builerParams() {
 			var resourceIdArray = getALlCheckedReourceId();
 			$("#resourceIds").val(JSON.stringify(resourceIdArray));
-			$.ajax({
-				type : "POST",
-				url : "${tradeBasePath}/platform/role/saveOrUpdate",
-				data : $('#formBean').serialize(),
-				error : function(request) {
-					$Y.tips("操作失败");
-				},
-				success : function(data) {
-					if (data.result.isSuccess) {
-						$Y.tips("操作成功");
-						var returnurl = "/platform/role/list";
-						openUrl(returnurl);
-					}else{
-						$Y.tips(data.result.msg);
-					}
-				}
-			});
 		}
 	</script>
     

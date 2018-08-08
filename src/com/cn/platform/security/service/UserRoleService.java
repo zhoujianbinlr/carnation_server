@@ -1,13 +1,3 @@
-/**
- 
-
- *  <P> Copyright 2017 阳光康众</p>
-
- *  <p> Created on 2016年4月8日</p>
- *  <p> Created by x-lan</p>
- 
- 
- */
 package com.cn.platform.security.service;
 
 import java.util.List;

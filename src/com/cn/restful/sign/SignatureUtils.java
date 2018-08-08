@@ -38,7 +38,7 @@ import com.cn.restful.RestConstant;
  * @ClassName: SignatureUtil
  * @Description: <p></p>
  * @JDK version used: 
- * @Author: 申姜
+ * @Author:
  * @Create Date: 2016年12月29日
  * @modify By:
  * @modify Date:
