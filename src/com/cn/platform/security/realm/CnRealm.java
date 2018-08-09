@@ -31,8 +31,7 @@ import com.cn.platform.security.service.UserService;
 public class CnRealm extends AuthorizingRealm {
   private static Logger logger = LoggerFactory.getLogger(CnRealm.class);
   
-  protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals)
-  {
+  protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals){
     long startTime = System.currentTimeMillis();
     Subject subject = SecurityUtils.getSubject();
     User user = (User)subject.getSession().getAttribute("platformUser");
@@ -54,6 +53,7 @@ public class CnRealm extends AuthorizingRealm {
       permissions.add(resource.getCode());
     }
     long costTime = System.currentTimeMillis() - startTime;
+    logger.info("doGetAuthorizationInfo cost time:" + costTime);
     logger.info("doGetAuthorizationInfo cost time:" + costTime);
     SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleIds);
     info.setStringPermissions(permissions);

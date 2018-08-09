@@ -190,9 +190,9 @@ public class ResourceController extends BasePlatformController<Resource, String>
 		String resourceId = request.getParameter("resourceId");
 		logger.info("加载子菜单列表, search:{}", resourceId);
 		List<Resource> list = resorceService.findMenuListByParentId(resourceId);
-       /* ModelAndView view = new ModelAndView("/platform/childMenu");
-        view.addObject("childMenuList", list);*/
-		return list;
+        ModelAndView view = new ModelAndView("/platform/childMenu");
+        view.addObject("childMenuList", list);
+		return view;
 	}
 
 	/**

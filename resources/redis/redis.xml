@@ -37,7 +37,6 @@
 		<constructor-arg index="3" value="${redis.connection.timeout}" type="int" />
 		<constructor-arg index="4" value="${redis.connection.password}" />
 		<!-- 指定数据库中的db1 -->
-		<!-- 开发:0 测试:15 生产:3-->
 		<constructor-arg index="5" value="0" />
 	</bean>
 	

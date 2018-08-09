@@ -21,7 +21,7 @@
                 <!-- 引入jdbc配置文件 -->
                 <value>classpath*:/framework_dev.properties</value>
                 <value>classpath*:/jdbc_dev.properties</value>
-                <!--  <value>classpath*:/redis/redis_dev.properties</value> -->
+                <value>classpath*:/redis/redis_dev.properties</value>
             </list>
         </property>
     </bean>
@@ -169,9 +169,9 @@
 
 
 
-    <!--引入redis 缓存配置
+    <!--引入redis 缓存配置-->
     <import resource="classpath*:/redis/redis.xml" />
-    -->
+
     <!--引入远程调用interface service
     <import resource="classpath*:/dubbo/dubbo-service.xml" />
     -->
