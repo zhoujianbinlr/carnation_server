@@ -45,11 +45,6 @@ public class ResourceController extends BasePlatformController<Resource, String>
 	/**
 	 * 菜单管理列表
 	 * 
-	 * @param pageNum
-	 * @param pageSize
-	 * @param search
-	 * @param modelMap
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/list")
@@ -97,7 +92,7 @@ public class ResourceController extends BasePlatformController<Resource, String>
 	/**
 	 * 保存菜单信息
 	 * 
-	 * @param entity
+	 * @param resource
 	 * @return
 	 */
 	@ResponseBody
@@ -158,8 +153,7 @@ public class ResourceController extends BasePlatformController<Resource, String>
 	/**
 	 * 删除资源
 	 * 
-	 * @param id
-	 * @param modelMap
+	 * @param request
 	 * @return
 	 */
 	@ResponseBody

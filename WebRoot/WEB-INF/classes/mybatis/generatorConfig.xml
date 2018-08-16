@@ -1,45 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
-<generatorConfiguration >
-	<classPathEntry  location="D:\Sunshine_Work\Prescription_PlatForm\WebRoot\WEB-INF\lib\mysql-connector-java-5.1.5-bin.jar"/> 
-	<context id="sunshine" targetRuntime="MyBatis3"
-		defaultModelType="flat">
-		<plugin type="com.cn.framework.common.mybatisgenerator.CombaPluginAdapter" >
-		</plugin>
-		 
-		<commentGenerator
-			type="com.cn.framework.common.mybatisgenerator.CombaCommentGenerator">
-			<property name="javaFileEncoding" value="UTF-8" />
-			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-			<property name="suppressAllComments" value="false" />
-			<property name="suppressDate" value="true" />
-		</commentGenerator>
-		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-		<!--
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://192.168.2.208:3306/ict_dev?characterEncoding=UTF8"
-			userId="root" password="root123">
-		</jdbcConnection> 
-		-->
- 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://192.168.200.225:33077/prescription_dev?characterEncoding=UTF8"
-			userId="root" password="ygkz309">
-		</jdbcConnection> 
-		<javaModelGenerator targetPackage="com.cn.platform.hospital.entity"
-			targetProject="D:\Sunshine_Work\Prescription_PlatForm\src">
-			<property name="enableSubPackages" value="true" />
-			<property name="trimStrings" value="true" />
-		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="mybatis.mapper.platform.hospital"
-			targetProject="D:\Sunshine_Work\Prescription_PlatForm\resources">
-			<property name="enableSubPackages" value="true" />
-		</sqlMapGenerator>
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.cn.platform.hospital.dao"  
-		    targetProject="D:\Sunshine_Work\Prescription_PlatForm\src">
-            <property name="enableSubPackages" value="true" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!--type="com.cn.mybatisgenerator.CombaCommentGenerator"-->
+        <commentGenerator type="com.cn.mybatisgenerator.CombaCommentGenerator">
+            <property name="javaFileEncoding" value="UTF-8" />
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/carnation_server?characterEncoding=UTF-8&amp;useInformationSchema=true" userId="root"
+                        password="zhoujb">
+            <!--<property name="useInformationSchema" value="true"></property>-->
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.cn.platform.fertility.entity"
+                            targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mybatis.mapper.platform.fertility"
+                         targetProject=".\resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.cn.platform.fertility.dao"
+                             targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+           <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
-		<table tableName="SYS_HOSPITAL" domainObjectName="Hospital" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-			<property name="rootClass" value="com.cn.framework.mvc.mysql.entity.BaseSQLEntity" />  
-		</table>
-	</context>
+        <!-- 指定数据库表 -->
+        <!-- <table schema="" tableName="tb_admin"></table>
+        <table schema="" tableName="tb_news_category"></table>
+        <table schema="" tableName="tb_news"></table>
+        <table schema="" tableName="tb_comment"></table>
+        <table schema="" tableName="tb_log"></table>
+        <table schema="" tableName="tb_menus"></table>
+        <table schema="" tableName="tb_roles_menus"></table>
+        <table schema="" tableName="tb_roles"></table>
+        <table schema="" tableName="tb_users"></table> -->
+
+        <table schema="" tableName="biz_fertility" domainObjectName="Fertility" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+    </context>
 </generatorConfiguration>

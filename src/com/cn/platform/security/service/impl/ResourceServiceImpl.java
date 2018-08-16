@@ -340,7 +340,7 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, String> imple
 
 		resMap.putAll(saveSubResources(resource));
 		resMap.put(GlobalConstant.MOTHED_INVOKE_RES_IS_SUCCESS, true);
-		resMap.put(GlobalConstant.MOTHED_INVOKE_RES_MSG, "操纵成功");
+		resMap.put(GlobalConstant.MOTHED_INVOKE_RES_MSG, "操作成功");
 		return resMap;
 	}
 
