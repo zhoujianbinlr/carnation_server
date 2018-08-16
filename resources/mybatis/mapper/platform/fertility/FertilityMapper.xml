@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.platform.fertility.dao.FertilityMapper">
+  <resultMap id="BaseResultMap" type="com.cn.platform.fertility.entity.Fertility">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="district_code" jdbcType="VARCHAR" property="districtCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="logo_path" jdbcType="VARCHAR" property="logoPath" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="link_man" jdbcType="VARCHAR" property="linkMan" />
+    <result column="link_phone" jdbcType="VARCHAR" property="linkPhone" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="cp" jdbcType="VARCHAR" property="cp" />
+    <result column="cp_name" jdbcType="VARCHAR" property="cpName" />
+    <result column="ct" jdbcType="TIMESTAMP" property="ct" />
+    <result column="ep" jdbcType="VARCHAR" property="ep" />
+    <result column="ep_name" jdbcType="VARCHAR" property="epName" />
+    <result column="et" jdbcType="TIMESTAMP" property="et" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, short_name, code, type, level, province_code, city_code, district_code, 
+    address, status, logo_path, introduction, link_man, link_phone, remark, cp, cp_name, 
+    ct, ep, ep_name, et
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from biz_fertility
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from biz_fertility
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cn.platform.fertility.entity.Fertility">
+    insert into biz_fertility (id, name, short_name, 
+      code, type, level, 
+      province_code, city_code, district_code, 
+      address, status, logo_path, 
+      introduction, link_man, link_phone, 
+      remark, cp, cp_name, 
+      ct, ep, ep_name, et
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{provinceCode,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{districtCode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{logoPath,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=VARCHAR}, #{linkMan,jdbcType=VARCHAR}, #{linkPhone,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{cp,jdbcType=VARCHAR}, #{cpName,jdbcType=VARCHAR}, 
+      #{ct,jdbcType=TIMESTAMP}, #{ep,jdbcType=VARCHAR}, #{epName,jdbcType=VARCHAR}, #{et,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.platform.fertility.entity.Fertility">
+    insert into biz_fertility
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="shortName != null">
+        short_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="provinceCode != null">
+        province_code,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="districtCode != null">
+        district_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="logoPath != null">
+        logo_path,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="linkMan != null">
+        link_man,
+      </if>
+      <if test="linkPhone != null">
+        link_phone,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="cp != null">
+        cp,
+      </if>
+      <if test="cpName != null">
+        cp_name,
+      </if>
+      <if test="ct != null">
+        ct,
+      </if>
+      <if test="ep != null">
+        ep,
+      </if>
+      <if test="epName != null">
+        ep_name,
+      </if>
+      <if test="et != null">
+        et,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null">
+        #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="logoPath != null">
+        #{logoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null">
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null">
+        #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="cp != null">
+        #{cp,jdbcType=VARCHAR},
+      </if>
+      <if test="cpName != null">
+        #{cpName,jdbcType=VARCHAR},
+      </if>
+      <if test="ct != null">
+        #{ct,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ep != null">
+        #{ep,jdbcType=VARCHAR},
+      </if>
+      <if test="epName != null">
+        #{epName,jdbcType=VARCHAR},
+      </if>
+      <if test="et != null">
+        #{et,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.platform.fertility.entity.Fertility">
+    update biz_fertility
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCode != null">
+        district_code = #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="logoPath != null">
+        logo_path = #{logoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null">
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null">
+        link_phone = #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="cp != null">
+        cp = #{cp,jdbcType=VARCHAR},
+      </if>
+      <if test="cpName != null">
+        cp_name = #{cpName,jdbcType=VARCHAR},
+      </if>
+      <if test="ct != null">
+        ct = #{ct,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ep != null">
+        ep = #{ep,jdbcType=VARCHAR},
+      </if>
+      <if test="epName != null">
+        ep_name = #{epName,jdbcType=VARCHAR},
+      </if>
+      <if test="et != null">
+        et = #{et,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.platform.fertility.entity.Fertility">
+    update biz_fertility
+    set name = #{name,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      district_code = #{districtCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      logo_path = #{logoPath,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      link_phone = #{linkPhone,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      cp = #{cp,jdbcType=VARCHAR},
+      cp_name = #{cpName,jdbcType=VARCHAR},
+      ct = #{ct,jdbcType=TIMESTAMP},
+      ep = #{ep,jdbcType=VARCHAR},
+      ep_name = #{epName,jdbcType=VARCHAR},
+      et = #{et,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+    <select id="findAll">
+        select <include refid="Base_Column_List" /> from biz_fertility
+    </select>
+</mapper>
