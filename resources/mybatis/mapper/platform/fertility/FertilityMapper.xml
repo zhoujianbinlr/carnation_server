@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cn.platform.fertility.dao.FertilityMapper">
+<mapper namespace="com.cn.platform.fertility.entity.Fertility">
   <resultMap id="BaseResultMap" type="com.cn.platform.fertility.entity.Fertility">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -293,5 +293,16 @@
   </update>
     <select id="findAll">
         select <include refid="Base_Column_List" /> from biz_fertility
+    </select>
+
+    <select id="findListByPage" resultMap="BaseResultMap">
+        SELECT  <include refid="Base_Column_List" /> FROM biz_fertility
+        <where>
+            1=1
+            <if test="searchValue != null and searchValue != ''" >
+                and (name like CONCAT('%',trim('${searchValue}'),'%' ) or short_name like CONCAT('%',trim('${searchValue}'),'%' ))
+            </if>
+        </where>
+
     </select>
 </mapper>

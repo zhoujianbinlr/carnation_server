@@ -1,8 +1,10 @@
 package com.cn.mobileapp.login.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
+import com.cn.common.GlobalConstant;
+import com.cn.common.controller.BasePlatformController;
+import com.cn.framework.mvc.service.BaseService;
+import com.cn.mobileapp.login.entity.AppUser;
+import com.cn.mobileapp.login.service.AppUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cn.common.GlobalConstant;
-import com.cn.common.controller.BasePlatformController;
-import com.cn.framework.mvc.service.BaseService;
-import com.cn.mobileapp.login.entity.AppUser;
-import com.cn.mobileapp.login.service.AppUserService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 
@@ -42,7 +42,7 @@ public class HomeController extends BasePlatformController<AppUser, String> {
 	/**
 	 * 登录页面
 	 * 
-	 * @param modelMap
+	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/toLogin", method = RequestMethod.GET)

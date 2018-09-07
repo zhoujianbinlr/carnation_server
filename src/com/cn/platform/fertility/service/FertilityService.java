@@ -1,11 +1,11 @@
 package com.cn.platform.fertility.service;
 
-import com.cn.framework.mvc.service.BaseService;
+import com.cn.framework.mvc.mysql.service.BaseSQLService;
 import com.cn.platform.fertility.entity.Fertility;
 
 import java.util.List;
 
-public interface FertilityService extends BaseService<Fertility,String> {
+public interface FertilityService extends BaseSQLService<Fertility,String> {
     /**
      * 根据ID删除
      * @param id
